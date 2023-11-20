@@ -44,6 +44,9 @@ tail -n +12 domains_cache | sed "s/3600 IN CNAME trustpositif.kominfo.go.id.//g"
 rm domains_cache
 cp domains $FILE_NAME
 
+git lfs track domains
+git lfs track "$FILE_NAME"
+git add .gitattributes
 git add domains
 git add "$FILE_NAME"
 git commit -m "Add $FILE_NAME"
