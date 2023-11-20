@@ -39,8 +39,8 @@ if [ -e "$FILE_NAME" ]; then
     rm "$FILE_NAME"
 fi
 
-aria2c --check-certificate=false -x4 -o "$TARGET_DIR/domains" "$SOURCE_URL"
-tail -n +12 "$TARGET_DIR/domains" | sed "s/3600 IN CNAME trustpositif.kominfo.go.id.//g" > "$TARGET_DIR/domains"
+aria2c --check-certificate=false -x4 -o domains "$SOURCE_URL"
+tail -n +12 domains | sed "s/3600 IN CNAME trustpositif.kominfo.go.id.//g" > domains
 cp domains $FILE_NAME
 
 git add domains
