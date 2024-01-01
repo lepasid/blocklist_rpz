@@ -19,7 +19,7 @@ $TTL 900
 ```
 and
 ```
-3600 IN CNAME trustpositif.kominfo.go.id.
+3600 IN CNAME lamanlabuh.aduankonten.id.
 ```
 ## Steps to Update this
 1. Get repo perms
@@ -43,7 +43,7 @@ if [ -e "$FILE_NAME" ]; then
 fi
 
 aria2c --check-certificate=false -x4 -o domains_cache "$SOURCE_URL"
-tail -n +12 domains_cache | sed -e "s/3600 IN CNAME trustpositif.kominfo.go.id.//g" -e "s/\*\.//g" > domains
+tail -n +12 domains_cache | sed -e "s/3600 IN CNAME lamanlabuh.aduankonten.id.//g" -e "s/\*\.//g" > domains
 rm domains_cache
 cp domains $FILE_NAME
 
