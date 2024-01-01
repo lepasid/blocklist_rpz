@@ -1,6 +1,6 @@
 # Kominfo RPZ Blocklist
 They're also leaking their RPZ lol  
-This is a trimmed down version removing
+This is a trimmed down version removing duplicates, this:
 ```
 $TTL 900
 
@@ -17,7 +17,7 @@ $TTL 900
 ```
 *.
 ```
-and
+and this:
 ```
 3600 IN CNAME lamanlabuh.aduankonten.id.
 ```
@@ -43,7 +43,7 @@ if [ -e "$FILE_NAME" ]; then
 fi
 
 aria2c --check-certificate=false -x4 -o domains_cache "$SOURCE_URL"
-tail -n +12 domains_cache | sed -e "s/3600 IN CNAME lamanlabuh.aduankonten.id.//g" -e "s/\*\.//g" > domains
+tail -n +12 domains_cache | sed -e "s/3600 IN CNAME lamanlabuh.aduankonten.id.//g" -e "s/\*\.//g" | awk '!seen[$0]++' > domains
 rm domains_cache
 cp domains $FILE_NAME
 
